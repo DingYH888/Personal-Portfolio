@@ -1,0 +1,61 @@
+/* 设计令牌（PRD 6.2）：颜色以 RGB 通道变量定义，经 tailwind.config.js 引用，从而支持 /透明度 修饰符 */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: 11 15 20; /* #0B0F14 页面背景 */
+  --color-surface: 17 22 29; /* #11161D 卡片/导航背景 */
+  --color-surface-hover: 22 29 38; /* #161D26 卡片 hover 背景 */
+  --color-line: 255 255 255; /* 边框基色，固定 8% 透明度（见 tailwind.config.js） */
+  --color-ink: 230 237 243; /* #E6EDF3 主文字 */
+  --color-ink-2: 155 168 181; /* #9BA8B5 次要文字 */
+  --color-ink-3: 107 118 131; /* #6B7683 弱提示文字 */
+  --color-accent: 34 197 94; /* #22C55E 强调色 */
+  --color-accent-strong: 22 163 74; /* #16A34A 强调色 hover 深一档 */
+  --color-on-accent: 5 46 22; /* #052E16 强调色按钮上的文字 */
+  --color-link: 96 165 250; /* #60A5FA 外链/次强调 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    line-height: 1.7;
+  }
+  /* 键盘聚焦可见性（PRD 可访问性要求） */
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-accent));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-line bg-surface;
+  }
+  .icon-box {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-strong;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent;
+  }
+}
+
+/* 遵循系统「减弱动效」设置（PRD 6.2 无障碍动效） */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
