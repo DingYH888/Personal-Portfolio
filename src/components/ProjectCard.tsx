@@ -17,7 +17,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       to={`/projects/${project.slug}`}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-line bg-surface transition-all duration-200 hover:-translate-y-1 hover:border-accent/60 hover:shadow-[0_8px_24px_rgba(0,0,0,0.4)]"
+      className="card group flex flex-col overflow-hidden"
     >
       {/* 16:10 容器 + object-cover 防布局偏移（CLS） */}
       <div className="aspect-[16/10] overflow-hidden">
@@ -27,7 +27,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           width={1280}
           height={800}
           loading="lazy"
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
       </div>
       <div className="flex flex-1 flex-col gap-2.5 p-5">

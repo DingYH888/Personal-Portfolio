@@ -47,7 +47,7 @@ export default function ProjectDetailPage() {
 
         {/* 项目截图：主图首屏加载，其余懒加载；16:9 容器防布局偏移 */}
         <div className="mt-8 space-y-4">
-          <figure className="overflow-hidden rounded-2xl border border-line">
+          <figure className="overflow-hidden rounded-3xl border border-line">
             <img
               src={cover}
               alt={`${project.name} 界面截图 1`}
@@ -55,7 +55,7 @@ export default function ProjectDetailPage() {
             />
           </figure>
           {rest.map((src, i) => (
-            <figure key={src} className="overflow-hidden rounded-2xl border border-line">
+            <figure key={src} className="overflow-hidden rounded-3xl border border-line">
               <img
                 src={src}
                 alt={`${project.name} 界面截图 ${i + 2}`}
@@ -119,7 +119,7 @@ export default function ProjectDetailPage() {
               )}
             </div>
           ) : (
-            <p className="rounded-xl border border-dashed border-line p-4 text-sm leading-6 text-ink-3">
+            <p className="rounded-2xl border border-dashed border-line p-4 text-sm leading-6 text-ink-3">
               项目的在线演示与源码暂未公开。如需了解更多实现细节，欢迎通过联系方式页与我沟通。
             </p>
           )}

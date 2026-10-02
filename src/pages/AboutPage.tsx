@@ -13,7 +13,8 @@ export default function AboutPage() {
 
   return (
     <Page>
-      <div className="mx-auto max-w-[1152px] px-4 py-12 md:px-6 md:py-16">
+      {/* 窄列（768px）水平居中：两端留白均衡，修复桌面端右侧大片空白（PRD FR-2 v1.3） */}
+      <div className="mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
         <SectionHeader
           icon={<User size={24} className="text-accent" />}
           title="关于我"
@@ -22,7 +23,7 @@ export default function AboutPage() {
         />
 
         {/* 详细介绍 */}
-        <div className="max-w-3xl space-y-4 leading-7 text-ink-2">
+        <div className="space-y-4 leading-7 text-ink-2">
           {profile.about.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -41,7 +42,7 @@ export default function AboutPage() {
         {/* 教育背景时间线 */}
         <section className="mt-14">
           <SectionHeader title="教育背景" subtitle="教育经历与荣誉奖项" />
-          <div className="card max-w-3xl p-5 md:p-6">
+          <div className="card p-5 md:p-6">
             <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
               <span className="rounded-full bg-accent/10 px-2.5 py-1 text-xs text-accent">
                 {education.period}

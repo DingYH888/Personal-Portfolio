@@ -25,7 +25,7 @@ export default function NavBar() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-line bg-bg/65 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-[1152px] items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2.5" aria-label="返回首页">
           <img src={profile.logo} alt="" className="h-8 w-8 rounded-full object-cover ring-1 ring-line" />
@@ -68,7 +68,7 @@ export default function NavBar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="border-b border-line bg-bg md:hidden"
+            className="border-b border-line bg-bg/95 backdrop-blur-md md:hidden"
             aria-label="移动端导航"
           >
             <div className="flex flex-col px-4 py-2">

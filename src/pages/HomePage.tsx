@@ -56,15 +56,15 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* 右栏：头像卡片（带边框内衬，贴近参考图照片卡） */}
+          {/* 右栏：头像卡片（静态玻璃底 + 大圆角，非交互元素不做 hover 动效） */}
           <div className="order-first justify-self-center lg:order-last lg:justify-self-end">
-            <div className="rounded-2xl border border-line bg-surface p-2.5">
+            <div className="rounded-3xl border border-line bg-surface p-2.5 shadow-soft">
               <img
                 src={profile.avatar}
                 alt={`${profile.name} 头像`}
                 width={600}
                 height={800}
-                className="aspect-[3/4] w-44 rounded-xl object-cover md:w-56 lg:w-60"
+                className="aspect-[3/4] w-44 rounded-2xl object-cover md:w-56 lg:w-60"
               />
             </div>
           </div>

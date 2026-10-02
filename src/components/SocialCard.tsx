@@ -37,7 +37,8 @@ export default function SocialCard({ icon, platform, handle, url, download, copy
       </span>
       <span className="min-w-0 flex-1">
         <span className="block font-semibold text-ink">{platform}</span>
-        <span className="block truncate text-sm text-ink-2">{handle}</span>
+        {/* 账号信息自动换行而非截断，保证移动端完整可读 */}
+        <span className="block break-words text-sm leading-6 text-ink-2">{handle}</span>
       </span>
       {url && !download && (
         <ExternalLink size={18} className="shrink-0 text-ink-3 transition-colors group-hover:text-accent" />
@@ -53,7 +54,7 @@ export default function SocialCard({ icon, platform, handle, url, download, copy
         download={download}
         target={download ? undefined : "_blank"}
         rel={download ? undefined : "noopener noreferrer"}
-        className="card group flex items-center gap-4 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/60"
+        className="card group flex items-center gap-4 p-5"
       >
         {inner}
         {extra}

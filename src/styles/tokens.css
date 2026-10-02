@@ -1,20 +1,22 @@
-/* 设计令牌（PRD 6.2）：颜色以 RGB 通道变量定义，经 tailwind.config.js 引用，从而支持 /透明度 修饰符 */
+/* 设计令牌（PRD 6.2）：颜色以 CSS 变量定义，经 tailwind.config.js 引用，组件内禁止硬编码色值。
+   v1.3 深蓝渐变玻璃拟态：低饱和、柔和弥散阴影、轻度磨砂、大圆角、克制微动效 */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --color-bg: 11 15 20; /* #0B0F14 页面背景 */
-  --color-surface: 17 22 29; /* #11161D 卡片/导航背景 */
-  --color-surface-hover: 22 29 38; /* #161D26 卡片 hover 背景 */
-  --color-line: 255 255 255; /* 边框基色，固定 8% 透明度（见 tailwind.config.js） */
-  --color-ink: 230 237 243; /* #E6EDF3 主文字 */
-  --color-ink-2: 155 168 181; /* #9BA8B5 次要文字 */
-  --color-ink-3: 107 118 131; /* #6B7683 弱提示文字 */
-  --color-accent: 34 197 94; /* #22C55E 强调色 */
-  --color-accent-strong: 22 163 74; /* #16A34A 强调色 hover 深一档 */
-  --color-on-accent: 5 46 22; /* #052E16 强调色按钮上的文字 */
-  --color-link: 96 165 250; /* #60A5FA 外链/次强调 */
+  --color-bg: 11 17 32; /* #0B1120 渐变起点 · 深藏蓝 */
+  --color-bg-deep: 19 28 54; /* #131C36 渐变终点 · 暗靛蓝 */
+  --color-surface: rgba(255, 255, 255, 0.04); /* 玻璃卡片底（半透明） */
+  --color-surface-hover: rgba(255, 255, 255, 0.07); /* 玻璃卡片 hover 底 */
+  --color-line: rgba(255, 255, 255, 0.09); /* 边框/分割线 */
+  --color-ink: 232 238 249; /* #E8EEF9 主文字 */
+  --color-ink-2: 167 180 204; /* #A7B4CC 次要文字 */
+  --color-ink-3: 104 118 146; /* #687692 弱提示文字 */
+  --color-accent: 124 156 248; /* #7C9CF8 强调色 · 柔和靛蓝 */
+  --color-accent-strong: 147 176 255; /* #93B0FF 强调色 hover 亮一档 */
+  --color-on-accent: 11 17 32; /* #0B1120 强调色按钮上的文字 */
+  --color-link: 143 179 255; /* #8FB3FF 外链/次强调 */
 }
 
 @layer base {
@@ -22,7 +24,14 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-bg font-sans text-ink antialiased;
+    @apply font-sans text-ink antialiased;
+    /* 深蓝 → 暗靛蓝柔和线性渐变背景（低饱和、氛围沉稳） */
+    background: linear-gradient(
+      168deg,
+      rgb(var(--color-bg)) 0%,
+      rgb(14 22 48) 52%,
+      rgb(var(--color-bg-deep)) 100%
+    );
     line-height: 1.7;
   }
   /* 键盘聚焦可见性（PRD 可访问性要求） */
@@ -33,17 +42,38 @@
 }
 
 @layer components {
+  /* 玻璃卡片：半透明底 + 轻度磨砂（blur ≤ 8px，避免过重毛玻璃）+ 大圆角 + 弱投影 */
   .card {
-    @apply rounded-2xl border border-line bg-surface;
+    @apply rounded-3xl border border-line backdrop-blur-sm;
+    background-color: var(--color-surface);
+    box-shadow: 0 2px 12px rgba(2, 8, 20, 0.2);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-color 0.3s ease,
+      background-color 0.3s ease;
+  }
+  /* hover 微动效：轻微上浮 2px + 柔和放大 1.008 + 背景透明度微增，过渡平缓 */
+  .card:hover {
+    background-color: var(--color-surface-hover);
+    border-color: rgba(124, 156, 248, 0.35);
+    box-shadow:
+      0 16px 40px rgba(2, 8, 20, 0.38),
+      0 4px 14px rgba(124, 156, 248, 0.06);
+    transform: translateY(-2px) scale(1.008);
   }
   .icon-box {
     @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent;
   }
   .btn-primary {
-    @apply inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-medium text-on-accent transition-colors hover:bg-accent-strong;
+    @apply inline-flex items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-medium text-on-accent transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-strong;
+    box-shadow: 0 4px 14px rgba(124, 156, 248, 0.22);
+  }
+  .btn-primary:hover {
+    box-shadow: 0 10px 26px rgba(124, 156, 248, 0.3);
   }
   .btn-outline {
-    @apply inline-flex items-center gap-2 rounded-lg border border-line px-5 py-2.5 text-sm text-ink transition-colors hover:border-accent hover:text-accent;
+    @apply inline-flex items-center gap-2 rounded-xl border border-line px-5 py-2.5 text-sm text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:bg-surface-hover;
   }
 }
 
