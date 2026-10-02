@@ -114,7 +114,9 @@ export const profile: Profile = {
     {
       platform: "邮箱",
       handle: "yuhaoqqd@qq.com",
-      url: "mailto:yuhaoqqd@qq.com",
+      // 「发邮件」走 QQ 邮箱网页版写信页（收件人预填）：mailto 在未配置邮件客户端的
+      // 电脑上只会弹出系统"选择应用"对话框，无法直达网页邮箱
+      url: "https://mail.qq.com/cgi-bin/qm_share?qc_function=send_mail&to=yuhaoqqd@qq.com",
       icon: "email",
     },
     {

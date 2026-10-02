@@ -12,6 +12,7 @@ export default function ContactPage() {
 
   const github = profile.socials.find((s) => s.icon === "github");
   const wechat = profile.socials.find((s) => s.icon === "wechat");
+  const emailSocial = profile.socials.find((s) => s.icon === "email");
 
   return (
     <Page>
@@ -24,7 +25,7 @@ export default function ContactPage() {
         />
 
         <div className="grid gap-4">
-          {/* 邮箱：复制 + mailto */}
+          {/* 邮箱：复制 + 发邮件（QQ 邮箱网页版写信页，收件人预填，新窗口打开） */}
           <SocialCard
             icon="email"
             platform="邮箱"
@@ -32,7 +33,9 @@ export default function ContactPage() {
             copyText={profile.email}
             extra={
               <a
-                href={`mailto:${profile.email}`}
+                href={emailSocial?.url ?? `mailto:${profile.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-xs text-ink-2 transition-colors hover:border-accent hover:text-accent"
               >
                 <MailPlus size={14} />

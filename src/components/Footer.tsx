@@ -26,8 +26,8 @@ export default function Footer() {
               <a
                 key={s.platform}
                 href={s.url}
-                target={s.url.startsWith("mailto") ? undefined : "_blank"}
-                rel={s.url.startsWith("mailto") ? undefined : "noopener noreferrer"}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={s.platform}
                 className="text-ink-3 transition-colors hover:text-accent"
               >
