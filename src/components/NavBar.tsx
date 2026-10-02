@@ -28,7 +28,7 @@ export default function NavBar() {
     <header className="sticky top-0 z-50 border-b border-line bg-bg/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1152px] items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2.5" aria-label="返回首页">
-          <img src={profile.avatar} alt="" className="h-8 w-8 rounded-full object-cover ring-1 ring-line" />
+          <img src={profile.logo} alt="" className="h-8 w-8 rounded-full object-cover ring-1 ring-line" />
           <span className="font-semibold text-ink">{profile.name}</span>
         </Link>
 

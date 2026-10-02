@@ -26,11 +26,13 @@ npm run preview    # 预览生产构建  http://localhost:4173
 图片与文件：
 - 头像 `public/images/avatar.jpg`；项目截图 `public/images/projects/`；简历 `public/files/resume.pdf`
 
-## 部署（方案 A：Gitee 托管 + Vercel CLI）
+## 部署（GitHub + Vercel 集成）
 
-```bash
-git push origin main     # 代码推送到 Gitee 仓库（版本管理）
-npx vercel --prod        # 从本地上传部署（首次需浏览器登录 Vercel 账号）
-```
+代码托管在 GitHub：`https://github.com/DingYH888/Personal-Portfolio`
+
+1. 登录 [vercel.com](https://vercel.com)（可直接用 GitHub 账号登录）；
+2. 「Add New → Project」导入该仓库，Vercel 自动识别 Vite 项目，直接点 **Deploy**；
+3. 首次部署完成后获得免费域名（如 `xxx.vercel.app`），也可在项目设置中绑定自定义域名；
+4. 之后每次 `git push` 到 `main` 分支，Vercel 自动构建并上线，无需手动操作。
 
 部署成功后把分配的域名回填到 `src/data/site.ts` 的 `url`，并补充 `public/sitemap.xml`。

@@ -33,6 +33,8 @@ export interface Education {
 export interface Profile {
   name: string;
   title: string;
+  /** 个人 Logo（导航栏品牌位） */
+  logo: string;
   /** 一句话简介（首页 Hero） */
   tagline: string;
   avatar: string;
@@ -51,6 +53,7 @@ export interface Profile {
 export const profile: Profile = {
   name: "丁于皓",
   title: "全栈开发工程师 · AI 应用开发工程师",
+  logo: "/images/logo.jpg",
   tagline:
     "软件工程本科在读，专注 FastAPI + Vue 全栈开发与 LangChain/RAG 智能应用，擅长把大模型能力落地成完整可用的产品。",
   avatar: "/images/avatar.jpg",
