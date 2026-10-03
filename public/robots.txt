@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://personal-portfolio-iota-mocha-99.vercel.app/sitemap.xml
