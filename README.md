@@ -26,13 +26,20 @@ npm run preview    # 预览生产构建  http://localhost:4173
 图片与文件：
 - 头像 `public/images/avatar.jpg`；项目截图 `public/images/projects/`；简历 `public/files/resume.pdf`
 
-## 部署（GitHub + Vercel 集成）
+## 部署（双平台：EdgeOne Pages 主站 + Vercel 备用）
 
-代码托管在 GitHub：`https://github.com/DingYH888/Personal-Portfolio`
+代码托管在 GitHub：`https://github.com/DingYH888/Personal-Portfolio`，两个平台均已授权仓库，**push 到 main 自动构建部署**。
 
-1. 登录 [vercel.com](https://vercel.com)（可直接用 GitHub 账号登录）；
-2. 「Add New → Project」导入该仓库，Vercel 自动识别 Vite 项目，直接点 **Deploy**；
-3. 首次部署完成后获得免费域名（如 `xxx.vercel.app`），也可在项目设置中绑定自定义域名；
-4. 之后每次 `git push` 到 `main` 分支，Vercel 自动构建并上线，无需手动操作。
+### 主站：腾讯云 EdgeOne Pages
 
-部署成功后把分配的域名回填到 `src/data/site.ts` 的 `url`，并补充 `public/sitemap.xml`。
+1. [腾讯云控制台 → EdgeOne Pages](https://console.cloud.tencent.com/edgeone/pages) → 创建项目 → 从 GitHub 导入 `Personal-portfolio`（Vite 预设：构建 `npm run build`，输出 `dist`）；
+2. ⚠️ **默认域名仅为 3 小时限时预览**，长期使用必须绑定自定义域名：项目「域名管理」→ 添加域名 → 到注册商后台加 CNAME 解析；未备案域名只能选「全球可用性（不含中国大陆）」加速（自有域名国内可正常访问），完成 ICP 备案后可切换「中国大陆/全球」加速，国内全速；
+3. SPA 子路径回退已由仓库内 `public/_redirects` 支持，无需手动配置。
+
+### 备用：Vercel
+
+[vercel.com](https://vercel.com) 导入同一仓库，Framework Preset 自动识别 Vite，直接 Deploy；国内直连 `vercel.app` 默认域名已被阻断（实测），仅作备用。SPA 回退由仓库内 `vercel.json` 支持。
+
+### 域名定稿后回填（三处同步修改）
+
+`src/data/site.ts` 的 `url`、`public/sitemap.xml` 的 `<loc>`、`index.html` 的 canonical 与 `og:url` —— push 后两平台自动重新部署。
