@@ -13,8 +13,8 @@ export default function AboutPage() {
 
   return (
     <Page>
-      {/* 窄列（768px）水平居中：两端留白均衡，修复桌面端右侧大片空白（PRD FR-2 v1.3） */}
-      <div className="mx-auto max-w-3xl px-4 py-12 md:px-6 md:py-16">
+      {/* 恢复桌面端标准容器宽度（max-w-[1152px]，与其他页面一致，PRD FR-2 v1.7） */}
+      <div className="mx-auto max-w-[1152px] px-4 py-12 md:px-6 md:py-16">
         <SectionHeader
           icon={<User size={24} className="text-accent" />}
           title="关于我"
@@ -22,8 +22,8 @@ export default function AboutPage() {
           as="h1"
         />
 
-        {/* 详细介绍 */}
-        <div className="space-y-4 leading-7 text-ink-2">
+        {/* 详细介绍：居中阅读列（max-w-3xl），行宽舒适且两端留白均衡 */}
+        <div className="mx-auto max-w-3xl space-y-4 leading-7 text-ink-2">
           {profile.about.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
