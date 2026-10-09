@@ -1,10 +1,11 @@
 /**
- * 项目详情页（PRD FR-3.2）：返回入口 → 名称/周期角色 → 截图（主图 + 其余懒加载）→
- * 简介 → 技术栈 → 亮点 → 演示/源码链接；两者皆空展示「暂未公开」；slug 不存在渲染 404。
+ * 项目详情页（PRD FR-3.2 v1.6）：返回入口 → 名称/周期角色 → 项目简介 → 技术栈 →
+ * 项目亮点 → 项目截图（图片轮播）→ 演示/源码链接；两者皆空展示「暂未公开」；slug 不存在渲染 404。
  */
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ExternalLink, Sparkles } from "lucide-react";
 import GithubIcon from "../components/GithubIcon";
+import ImageCarousel from "../components/ImageCarousel";
 import Page from "../components/Page";
 import TagChip from "../components/TagChip";
 import NotFoundPage from "./NotFoundPage";
@@ -24,7 +25,6 @@ export default function ProjectDetailPage() {
   // slug 不存在 → 404 兜底，不白屏
   if (!project) return <NotFoundPage />;
 
-  const [cover, ...rest] = project.screenshots;
   const hasLinks = Boolean(project.demoUrl || project.repoUrl);
 
   return (
@@ -45,29 +45,8 @@ export default function ProjectDetailPage() {
           </p>
         )}
 
-        {/* 项目截图：主图首屏加载，其余懒加载；16:9 容器防布局偏移 */}
-        <div className="mt-8 space-y-4">
-          <figure className="overflow-hidden rounded-3xl border border-line">
-            <img
-              src={cover}
-              alt={`${project.name} 界面截图 1`}
-              className="aspect-video w-full object-cover"
-            />
-          </figure>
-          {rest.map((src, i) => (
-            <figure key={src} className="overflow-hidden rounded-3xl border border-line">
-              <img
-                src={src}
-                alt={`${project.name} 界面截图 ${i + 2}`}
-                loading="lazy"
-                className="aspect-video w-full object-cover"
-              />
-            </figure>
-          ))}
-        </div>
-
         {/* 项目简介 */}
-        <section className="mt-10">
+        <section className="mt-8">
           <h2 className="text-xl font-semibold text-ink">项目简介</h2>
           <div className="mt-3 space-y-3 leading-7 text-ink-2">
             {project.description.map((p, i) => (
@@ -100,6 +79,15 @@ export default function ProjectDetailPage() {
             </ul>
           </section>
         )}
+
+        {/* 项目截图：图片轮播（位于亮点之后、项目链接之前，v1.6） */}
+        <section className="mt-10">
+          <h2 className="mb-3 text-xl font-semibold text-ink">项目截图</h2>
+          <ImageCarousel
+            images={project.screenshots}
+            altPrefix={`${project.name} 界面截图`}
+          />
+        </section>
 
         {/* 项目链接：两者皆空 → 「暂未公开」提示（PRD FR-3.2） */}
         <section className="mt-10">

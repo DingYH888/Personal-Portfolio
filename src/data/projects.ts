@@ -42,8 +42,10 @@ export const projects: Project[] = [
     screenshots: [
       "/images/projects/sugar-guard-ai-1.png",
       "/images/projects/sugar-guard-ai-2.png",
+      "/images/projects/sugar-guard-ai-3.jpg",
       "/images/projects/sugar-guard-ai-4.png",
       "/images/projects/sugar-guard-ai-5.png",
+      "/images/projects/sugar-guard-ai-7.png",
     ],
     techStack: [
       "Python",
