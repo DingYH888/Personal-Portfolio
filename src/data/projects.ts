@@ -45,7 +45,9 @@ export const projects: Project[] = [
       "/images/projects/sugar-guard-ai-3.jpg",
       "/images/projects/sugar-guard-ai-4.png",
       "/images/projects/sugar-guard-ai-5.png",
+      "/images/projects/sugar-guard-ai-6.png",
       "/images/projects/sugar-guard-ai-7.png",
+      "/images/projects/sugar-guard-ai-8.jpg",
     ],
     techStack: [
       "Python",
