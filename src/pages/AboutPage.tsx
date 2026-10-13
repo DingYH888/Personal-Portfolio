@@ -22,8 +22,8 @@ export default function AboutPage() {
           as="h1"
         />
 
-        {/* 详细介绍：居中阅读列（max-w-3xl），行宽舒适且两端留白均衡 */}
-        <div className="mx-auto max-w-3xl space-y-4 leading-7 text-ink-2">
+        {/* 详细介绍：加宽阅读列（max-w-5xl），避免内容过于集中在页面中间 */}
+        <div className="mx-auto max-w-5xl space-y-4 leading-7 text-ink-2">
           {profile.about.map((p, i) => (
             <p key={i}>{p}</p>
           ))}

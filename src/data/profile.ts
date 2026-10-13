@@ -55,14 +55,14 @@ export const profile: Profile = {
   title: "全栈开发工程师 · AI 应用开发工程师",
   logo: "/images/logo.jpg",
   tagline:
-    "软件工程本科在读，专注 FastAPI + Vue 全栈开发与 LangChain/RAG 智能应用，擅长把大模型能力落地成完整可用的产品。",
+    "软件工程本科在读，专注 Java / Spring Boot 与 Python / FastAPI 双栈全栈开发及 LangChain / RAG 智能应用，擅长把大模型能力落地成完整可用的产品。",
   avatar: "/images/avatar.jpg",
   location: "洛阳",
   about: [
-    "我是丁于皓，河南科技大学软件工程专业本科生（2028 届），方向是全栈开发与 AI 应用开发。技术主线：后端 Python / FastAPI / MySQL，前端 Vue 3 / TypeScript，AI 工程 LangChain / LangGraph / RAG——两个代表项目均由我独立完成从设计到交付的完整闭环。",
-    "善于攻坚，也善于借力 AI 学习和工作：从零实现过 RAG 问答全链路（多格式文档解析 → 分块 → 向量检索 → 生成 → 来源追溯）、LangGraph 多节点 Agent 工作流与 ChromaDB 向量库调优；新框架上手快，习惯读官方文档与源码。已获中国高校计算机大赛 AIGC 创新赛省赛一等奖、华为 HCIA 认证。",
-    "工作认真负责，能在高强度、紧节点的任务中稳定交付；为人乐观友善，擅长跨角色沟通协作，能把目标拆解成可执行的步骤并推进落地。",
-    "求职方向为后端开发 / AI 应用开发的实习机会。如果你对我的项目感兴趣，欢迎通过联系方式页找我聊。",
+    "河南科技大学软件工程专业本科生（2028 届），全栈开发工程师 · AI 应用开发工程师。技术主线：后端 Java / Spring Boot / MySQL / Redis 与 Python / FastAPI 双栈，前端 Vue 3 / TypeScript，AI 工程 LangChain / LangGraph / RAG",
+    "后端功底扎实：掌握 Java 核心基础（集合、IO、反射等），熟悉使用 Spring Boot 进行开发，了解拦截器、AOP、全局异常处理、RESTful API 设计与前后端联调；熟悉 MySQL 的索引、事务与锁机制，了解 Redis 缓存、分布式锁等业务场景的实战方案，并熟悉 Git、Maven、Nginx 等部署与运维工具。",
+    "AI 工程能力完整：熟悉 FastAPI 异步后端与 Tortoise ORM 数据建模，掌握 RAG 全链路（多格式文档解析 → 分块 → 向量检索 → 生成 → 来源追溯）、LangChain 大模型调用封装与 Prompt 工程、LangGraph 多节点 Agent 工作流编排，并用 ChromaDB 完成向量库调优。善于攻坚，也善于借力 AI 学习与工作：熟练使用 Claude Code、ZCode 等 AI 编程工具，能基于 API 文档快速对接第三方服务；新框架上手快，习惯读官方文档与源码。已获中国高校计算机大赛 AIGC 创新赛省赛一等奖、华为 HCIA 认证。",
+    "工作认真负责，能在高强度、紧节点的任务中稳定交付，具备较强的抗压能力；为人乐观友善，擅长跨部门沟通与协作，能把目标拆解成可执行的步骤并推进落地。求职意向为后端开发 / AI 应用开发实习岗位，如有合适机会，非常期待能与贵团队深入沟通；您也可以通过联系方式页与我联系，期待您的来信。",
   ],
   skills: [
     {
