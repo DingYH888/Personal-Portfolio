@@ -143,10 +143,10 @@ export default function ImageCarousel({
             <ChevronRight size={20} />
           </button>
           <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2">
-            <span className="rounded-full border border-line bg-bg/70 px-2 py-0.5 text-xs text-ink-2 backdrop-blur">
+            <span className="shrink-0 whitespace-nowrap rounded-full border border-line bg-bg/70 px-2 py-0.5 text-xs text-ink-2 backdrop-blur">
               {index + 1} / {count}
             </span>
-            <div className="flex gap-1.5">
+            <div className="flex shrink-0 gap-1.5">
               {images.map((_, i) => (
                 <button
                   key={i}
